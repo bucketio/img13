@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#f8fafc"/>
+  <style>
+    .title{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',Arial,sans-serif;font-size:42px;font-weight:750;fill:#111827;letter-spacing:0}
+    .sub{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',Arial,sans-serif;font-size:22px;fill:#475569;letter-spacing:0}
+    .label{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',Arial,sans-serif;font-size:24px;font-weight:700;fill:#111827;letter-spacing:0}
+    .small{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',Arial,sans-serif;font-size:18px;fill:#475569;letter-spacing:0}
+    .tiny{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',Arial,sans-serif;font-size:15px;fill:#64748b;letter-spacing:0}
+  </style>
+  <text x="70" y="72" class="title">技术代际对比：从平面缩放到垂直堆叠</text>
+  <text x="70" y="112" class="sub">阅读任务：看清摩尔定律瓶颈如何从线宽问题转为低温、对准和层间互连问题</text>
+  
+  <rect x="70" y="165" width="330" height="420" rx="14" fill="#ffffff" stroke="#d6dee8" stroke-width="1.5"/>
+  <text x="105" y="215" class="label">平面 CMOS 缩放</text>
+  <text x="105" y="260" class="small">靠更小线宽提升密度</text>
+  <text x="105" y="298" class="small">制造生态成熟</text>
+  <text x="105" y="336" class="small">但成本和功耗收益放缓</text>
+  <path d="M125 450 h220" stroke="#94a3b8" stroke-width="12" stroke-linecap="round"/>
+  <rect x="150" y="380" width="44" height="70" fill="#60a5fa"/><rect x="213" y="360" width="44" height="90" fill="#60a5fa"/><rect x="276" y="400" width="44" height="50" fill="#60a5fa"/>
+
+  <line x1="410" y1="375" x2="510" y2="375" stroke="#0f766e" stroke-width="4" stroke-linecap="round"/><polygon points="510,375 496,382 496,368" fill="#0f766e"/>
+
+  <rect x="530" y="165" width="330" height="420" rx="14" fill="#ecfeff" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="565" y="215" class="label">异构 3D 封装</text>
+  <text x="565" y="260" class="small">芯粒/晶圆键合</text>
+  <text x="565" y="298" class="small">系统级密度提升</text>
+  <text x="565" y="336" class="small">仍受互连长度与延迟约束</text>
+  <rect x="610" y="420" width="170" height="34" rx="4" fill="#0891b2"/><rect x="630" y="370" width="170" height="34" rx="4" fill="#22d3ee"/><rect x="650" y="320" width="170" height="34" rx="4" fill="#67e8f9"/>
+
+  <line x1="870" y1="375" x2="970" y2="375" stroke="#0f766e" stroke-width="4" stroke-linecap="round"/><polygon points="970,375 956,382 956,368" fill="#0f766e"/>
+
+  <rect x="990" y="165" width="220" height="420" rx="14" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="1025" y="215" class="label">单片 3D</text>
+  <text x="1025" y="260" class="small">同一晶圆内逐层建器件</text>
+  <text x="1025" y="298" class="small">短互连、高密度</text>
+  <text x="1025" y="336" class="small">关键在低温工艺</text>
+  <rect x="1048" y="455" width="120" height="28" rx="4" fill="#fb923c"/><rect x="1048" y="407" width="120" height="28" rx="4" fill="#f97316"/><rect x="1048" y="359" width="120" height="28" rx="4" fill="#ea580c"/>
+  <line x1="1108" y1="359" x2="1108" y2="483" stroke="#7c2d12" stroke-width="5"/>
+  <text x="82" y="650" class="tiny">判断：真正的变量不是“再做小一点”，而是能否在不烤坏底层器件的温度下，把高质量硅晶体管继续向上堆。</text>
+</svg>

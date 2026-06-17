@@ -1,0 +1,96 @@
+<svg viewBox="0 0 1180 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">K3 and K4 semantic metadata governance</title>
+  <desc id="desc">Light themed diagram showing enterprise semantic governance and metadata filtering for AI retrieval and Agent usage.</desc>
+  <defs>
+    <style>
+      text { font-family: Inter, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; fill: #172033; }
+      .title { font-size: 32px; font-weight: 850; }
+      .subtitle { font-size: 17px; fill: #667085; }
+      .h { font-size: 20px; font-weight: 800; }
+      .body { font-size: 15px; fill: #475467; }
+      .tiny { font-size: 13px; fill: #667085; }
+      .white { fill: #ffffff; }
+      .k { font-size: 18px; font-weight: 850; fill: #ffffff; }
+    </style>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#101828" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#f79009"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#7a5af8"/>
+    </marker>
+  </defs>
+
+  <rect width="1180" height="720" fill="#f8fafc"/>
+  <circle cx="1050" cy="120" r="112" fill="#fff0d5" opacity="0.7"/>
+  <circle cx="114" cy="600" r="120" fill="#eee9ff" opacity="0.75"/>
+
+  <text x="72" y="72" class="title">K3 + K4：从“企业怎么说”到“AI 怎么理解”</text>
+  <text x="72" y="105" class="subtitle">先统一语义，再补齐元数据，检索才不会只靠相似度碰运气。</text>
+
+  <g transform="translate(72 170)">
+    <rect width="468" height="380" rx="24" fill="#ffffff" stroke="#d0d5dd" filter="url(#shadow)"/>
+    <circle cx="58" cy="58" r="28" fill="#f79009"/>
+    <text x="58" y="65" text-anchor="middle" class="k">K3</text>
+    <text x="102" y="54" class="h">企业语义治理</text>
+    <text x="102" y="82" class="body">解决企业内部到底怎么说</text>
+
+    <g transform="translate(44 128)">
+      <rect width="380" height="54" rx="16" fill="#fff7e6" stroke="#f6d69b"/>
+      <text x="24" y="34" class="body">术语表：统一产品、流程、业务概念</text>
+    </g>
+    <g transform="translate(44 204)">
+      <rect width="380" height="54" rx="16" fill="#fff7e6" stroke="#f6d69b"/>
+      <text x="24" y="34" class="body">同义词：客户案例 = 成功案例</text>
+    </g>
+    <g transform="translate(44 280)">
+      <rect width="380" height="54" rx="16" fill="#fff7e6" stroke="#f6d69b"/>
+      <text x="24" y="34" class="body">标签体系：业务线、行业、阶段、类型</text>
+    </g>
+  </g>
+
+  <path d="M552 356 C610 356, 622 356, 674 356" stroke="#f79009" stroke-width="3" fill="none" marker-end="url(#arrow-orange)"/>
+  <text x="613" y="334" text-anchor="middle" class="tiny">语义进入文档体系</text>
+
+  <g transform="translate(700 170)">
+    <rect width="408" height="380" rx="24" fill="#ffffff" stroke="#d0d5dd" filter="url(#shadow)"/>
+    <circle cx="58" cy="58" r="28" fill="#7a5af8"/>
+    <text x="58" y="65" text-anchor="middle" class="k">K4</text>
+    <text x="102" y="54" class="h">元数据治理</text>
+    <text x="102" y="82" class="body">告诉 AI 文档何时、对谁、是否有效</text>
+
+    <g transform="translate(38 126)">
+      <rect width="148" height="44" rx="14" fill="#f4f0ff" stroke="#d8ccff"/>
+      <text x="74" y="29" text-anchor="middle" class="body">版本号</text>
+    </g>
+    <g transform="translate(222 126)">
+      <rect width="148" height="44" rx="14" fill="#f4f0ff" stroke="#d8ccff"/>
+      <text x="74" y="29" text-anchor="middle" class="body">生效日期</text>
+    </g>
+    <g transform="translate(38 194)">
+      <rect width="148" height="44" rx="14" fill="#f4f0ff" stroke="#d8ccff"/>
+      <text x="74" y="29" text-anchor="middle" class="body">所属部门</text>
+    </g>
+    <g transform="translate(222 194)">
+      <rect width="148" height="44" rx="14" fill="#f4f0ff" stroke="#d8ccff"/>
+      <text x="74" y="29" text-anchor="middle" class="body">作者</text>
+    </g>
+    <g transform="translate(38 262)">
+      <rect width="148" height="44" rx="14" fill="#f4f0ff" stroke="#d8ccff"/>
+      <text x="74" y="29" text-anchor="middle" class="body">适用范围</text>
+    </g>
+    <g transform="translate(222 262)">
+      <rect width="148" height="44" rx="14" fill="#f4f0ff" stroke="#d8ccff"/>
+      <text x="74" y="29" text-anchor="middle" class="body">文档状态</text>
+    </g>
+  </g>
+
+  <path d="M904 558 C904 612, 764 628, 618 628 C460 628, 302 612, 302 558" stroke="#7a5af8" stroke-width="3" fill="none" marker-end="url(#arrow-purple)"/>
+  <g transform="translate(270 590)">
+    <rect width="640" height="74" rx="22" fill="#172033"/>
+    <text x="320" y="30" text-anchor="middle" class="white" font-size="18" font-weight="850">检索结果更可控</text>
+    <text x="320" y="55" text-anchor="middle" class="white" font-size="14">找得到企业真实说法，也过滤掉过期、越权或不适用的内容</text>
+  </g>
+</svg>

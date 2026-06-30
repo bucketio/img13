@@ -1,0 +1,52 @@
+<svg width="1200" height="520" viewBox="0 0 1200 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">评审快速阅读路径</title>
+  <desc id="desc">An infographic showing the fast reading path of a grant reviewer: title, abstract, headings, figures, and research basis.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8fafc"/>
+      <stop offset="0.55" stop-color="#ecfeff"/>
+      <stop offset="1" stop-color="#fff7ed"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="15" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="520" rx="34" fill="url(#bg)"/>
+  <rect x="38" y="38" width="1124" height="444" rx="28" fill="white" opacity="0.78" stroke="#dbeafe"/>
+  <text x="82" y="98" font-family="Noto Sans SC, Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="38" font-weight="800" fill="#0f172a">评审通常先看什么</text>
+  <text x="84" y="137" font-family="Noto Sans SC, Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="20" fill="#475569">初稿检查先从这些入口判断主线是否清楚</text>
+
+  <g filter="url(#shadow)">
+    <rect x="78" y="190" width="178" height="154" rx="18" fill="#0f766e"/>
+    <text x="167" y="244" text-anchor="middle" font-family="Noto Sans SC, Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="28" font-weight="800" fill="white">题目</text>
+    <text x="167" y="286" text-anchor="middle" font-family="Noto Sans SC, Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="17" fill="#ccfbf1">对象是否明确</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="302" y="190" width="178" height="154" rx="18" fill="#2563eb"/>
+    <text x="391" y="244" text-anchor="middle" font-family="Noto Sans SC, Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="28" font-weight="800" fill="white">摘要</text>
+    <text x="391" y="286" text-anchor="middle" font-family="Noto Sans SC, Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="17" fill="#dbeafe">问题是否成立</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="526" y="190" width="178" height="154" rx="18" fill="#7c3aed"/>
+    <text x="615" y="244" text-anchor="middle" font-family="Noto Sans SC, Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="28" font-weight="800" fill="white">小标题</text>
+    <text x="615" y="286" text-anchor="middle" font-family="Noto Sans SC, Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="17" fill="#ede9fe">结构是否顺</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="750" y="190" width="178" height="154" rx="18" fill="#ea580c"/>
+    <text x="839" y="244" text-anchor="middle" font-family="Noto Sans SC, Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="28" font-weight="800" fill="white">图表</text>
+    <text x="839" y="286" text-anchor="middle" font-family="Noto Sans SC, Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="17" fill="#ffedd5">是否降低理解成本</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="974" y="190" width="178" height="154" rx="18" fill="#be123c"/>
+    <text x="1063" y="244" text-anchor="middle" font-family="Noto Sans SC, Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="28" font-weight="800" fill="white">基础</text>
+    <text x="1063" y="286" text-anchor="middle" font-family="Noto Sans SC, Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="17" fill="#ffe4e6">是否支撑项目</text>
+  </g>
+
+  <path d="M259 267 H298" stroke="#94a3b8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M483 267 H522" stroke="#94a3b8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M707 267 H746" stroke="#94a3b8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M931 267 H970" stroke="#94a3b8" stroke-width="5" stroke-linecap="round"/>
+
+  <rect x="190" y="392" width="820" height="58" rx="29" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="600" y="429" text-anchor="middle" font-family="Noto Sans SC, Microsoft YaHei, PingFang SC, Arial, sans-serif" font-size="22" font-weight="700" fill="#92400e">检查重点：评审能否很快说清“这个项目到底要解决什么问题”</text>
+</svg>

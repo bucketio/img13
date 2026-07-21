@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" role="img" aria-labelledby="title desc">
+  <title id="title">Ansible 适合的 Windows 运维场景</title>
+  <desc id="desc">列出文件分发、PowerShell 脚本、服务检查、软件安装和巡检等 Windows 运维场景。</desc>
+  <rect width="900" height="430" fill="#ffffff"/>
+  <text x="48" y="65" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#182033">适合哪些 Windows 运维场景？</text>
+  <g font-family="Arial, sans-serif" font-size="21">
+    <rect x="70" y="125" width="760" height="58" rx="18" fill="#edf5ff"/>
+    <text x="112" y="162" fill="#2f6bd9" font-weight="700">批量复制工具或配置文件</text>
+    <rect x="70" y="198" width="760" height="58" rx="18" fill="#e8f7ef"/>
+    <text x="112" y="235" fill="#24704d" font-weight="700">批量执行 PowerShell 脚本</text>
+    <rect x="70" y="271" width="760" height="58" rx="18" fill="#fff5df"/>
+    <text x="112" y="308" fill="#946200" font-weight="700">检查服务、补丁、系统版本和主机信息</text>
+    <rect x="70" y="344" width="760" height="58" rx="18" fill="#f6f7fb"/>
+    <text x="112" y="381" fill="#334155" font-weight="700">安装软件、修改配置、生成巡检结果</text>
+  </g>
+</svg>

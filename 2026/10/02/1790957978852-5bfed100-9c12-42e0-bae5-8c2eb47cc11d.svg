@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 818" width="760" height="818">
+<defs>
+  <style>
+    text { font-family: -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; }
+    .mono { font-family: 'SF Mono', Menlo, Consolas, monospace; }
+  </style>
+  <linearGradient id="gBlue" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1D4ED8"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient>
+  <linearGradient id="gOrange" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#C2410C"/><stop offset="100%" stop-color="#FB923C"/></linearGradient>
+  <linearGradient id="gGreen" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#15803D"/><stop offset="100%" stop-color="#4ADE80"/></linearGradient>
+  <linearGradient id="gPurple" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#6D28D9"/><stop offset="100%" stop-color="#A78BFA"/></linearGradient>
+  <linearGradient id="gSlate" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#475569"/><stop offset="100%" stop-color="#94A3B8"/></linearGradient>
+  <linearGradient id="gTeal" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0F766E"/><stop offset="100%" stop-color="#2DD4BF"/></linearGradient>
+  <filter id="shadowSm"><feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#64748B" flood-opacity="0.12"/></filter>
+  <marker id="arr_gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#94A3B8"/></marker>
+  <marker id="arr_green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#22C55E"/></marker>
+  <marker id="arr_blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#3B82F6"/></marker>
+  <marker id="arr_orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#F97316"/></marker>
+  <marker id="arr_red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#EF4444"/></marker>
+</defs>
+<rect width="760" height="818" fill="#F8FAFC"/>
+<text x="380" y="48" font-size="26" font-weight="800" fill="#0F172A" text-anchor="middle">跨会话记忆:留下来,搜出来,想起来</text>
+<text x="380" y="76" font-size="14" font-weight="400" fill="#64748B" text-anchor="middle">上排是怎么写进去,中间是存在哪,下排是怎么读出来</text>
+<text x="40" y="106" font-size="13" font-weight="700" fill="#64748B" text-anchor="start">留下来(写)</text>
+<rect x="40" y="116" width="160" height="86" rx="12" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1" filter="url(#shadowSm)"/>
+<text x="120" y="146" font-size="14" font-weight="700" fill="#1E40AF" text-anchor="middle">每条消息</text>
+<text x="120" y="172" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle">追加进转录</text>
+<rect x="213" y="116" width="160" height="86" rx="12" fill="#FFF7ED" stroke="#FDBA74" stroke-width="1" filter="url(#shadowSm)"/>
+<text x="293" y="146" font-size="14" font-weight="700" fill="#9A3412" text-anchor="middle">重置时</text>
+<text x="293" y="172" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle">session-memory 钩子</text>
+<rect x="386" y="116" width="160" height="86" rx="12" fill="#FFF7ED" stroke="#FDBA74" stroke-width="1" filter="url(#shadowSm)"/>
+<text x="466" y="146" font-size="14" font-weight="700" fill="#9A3412" text-anchor="middle">压缩前</text>
+<text x="466" y="172" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle">模型把值得记的写进日记</text>
+<rect x="559" y="116" width="160" height="86" rx="12" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="1" filter="url(#shadowSm)"/>
+<text x="639" y="146" font-size="14" font-weight="700" fill="#5B21B6" text-anchor="middle">转录入索引</text>
+<text x="639" y="172" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle">切块,可选向量,默认不开</text>
+<line x1="120" y1="204" x2="120" y2="258" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr_gray)"/>
+<line x1="293" y1="204" x2="293" y2="258" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr_gray)"/>
+<line x1="466" y1="204" x2="466" y2="258" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr_gray)"/>
+<line x1="639" y1="204" x2="639" y2="258" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr_gray)"/>
+<rect x="40" y="260" width="160" height="100" rx="12" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1" filter="url(#shadowSm)"/>
+<text x="120" y="290" font-size="13.5" font-weight="700" fill="#1E40AF" text-anchor="middle">转录 (SQLite)</text>
+<text x="120" y="314" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle">原文,带全文索引</text>
+<rect x="213" y="260" width="333" height="100" rx="12" fill="#FFF7ED" stroke="#FDBA74" stroke-width="1" filter="url(#shadowSm)"/>
+<text x="380" y="290" font-size="13.5" font-weight="700" fill="#9A3412" text-anchor="middle">笔记文件 memory/</text>
+<text class="mono" x="380" y="314" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle">YYYY-MM-DD-HHMM.md(重置时)</text>
+<text class="mono" x="380" y="336" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle">YYYY-MM-DD.md(压缩前)</text>
+<rect x="559" y="260" width="160" height="100" rx="12" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="1" filter="url(#shadowSm)"/>
+<text x="639" y="290" font-size="13.5" font-weight="700" fill="#5B21B6" text-anchor="middle">记忆索引</text>
+<text x="639" y="314" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle">切块 + 向量 + 全文</text>
+<text x="639" y="336" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle">笔记也会被收进来</text>
+<text x="213" y="404" font-size="13" font-weight="700" fill="#64748B" text-anchor="start">搜出来、想起来(读)</text>
+<line x1="120" y1="362" x2="120" y2="416" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr_gray)"/>
+<line x1="380" y1="362" x2="380" y2="416" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr_gray)"/>
+<line x1="639" y1="362" x2="639" y2="416" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr_gray)"/>
+<rect x="40" y="418" width="160" height="100" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#shadowSm)"/>
+<text class="mono" x="120" y="448" font-size="13" font-weight="700" fill="#1E40AF" text-anchor="middle">sessions_search</text>
+<text x="120" y="472" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle">逐字搜原文</text>
+<text x="120" y="492" font-size="11.5" font-weight="400" fill="#475569" text-anchor="middle">重置前的也能搜到</text>
+<rect x="213" y="418" width="506" height="100" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#shadowSm)"/>
+<text class="mono" x="466" y="448" font-size="13" font-weight="700" fill="#9A3412" text-anchor="middle">memory_search</text>
+<text x="466" y="472" font-size="12" font-weight="400" fill="#475569" text-anchor="middle">关键词加语义搜笔记;开了转录索引,还能搜转录</text>
+<text x="466" y="494" font-size="12" font-weight="700" fill="#475569" text-anchor="middle">日记和转录不会自动塞进提示词,要 agent 主动去调用</text>
+<line x1="466" y1="548" x2="466" y2="520" stroke="#F97316" stroke-width="2.5" marker-end="url(#arr_orange)"/>
+<text x="480" y="540" font-size="11.5" font-weight="700" fill="#9A3412" text-anchor="start">子 agent 替你调用</text>
+<rect x="213" y="552" width="506" height="100" rx="12" fill="#FFF7ED" stroke="#FDBA74" stroke-width="1.5" filter="url(#shadowSm)"/>
+<text x="466" y="582" font-size="14" font-weight="700" fill="#9A3412" text-anchor="middle">Active Memory:回复之前先去翻</text>
+<text x="466" y="606" font-size="12" font-weight="400" fill="#7C2D12" text-anchor="middle">阻塞式记忆子 agent,返回一行摘要</text>
+<text x="466" y="628" font-size="12" font-weight="400" fill="#7C2D12" text-anchor="middle">拼在你的消息前面,主 agent 才开始回复</text>
+<rect x="40" y="684" width="680" height="110" rx="12" fill="#0F172A" stroke="#0F172A" stroke-width="1" filter="url(#shadowSm)"/>
+<text x="64" y="714" font-size="14" font-weight="700" fill="#FBBF24" text-anchor="start">记住一点</text>
+<text x="64" y="742" font-size="13" font-weight="400" fill="#E2E8F0" text-anchor="start">三条读取路径里,只有 Active Memory 是自动的,其余都要 agent 自己去调用。</text>
+<text x="64" y="764" font-size="13" font-weight="400" fill="#E2E8F0" text-anchor="start">它走的也是 memory_search,所以日记、转录得先写进去、建好索引。</text>
+</svg>

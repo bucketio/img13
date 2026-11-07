@@ -1,0 +1,526 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 1330" width="750" height="1330" role="img" aria-labelledby="pa-title pa-desc">
+<title id="pa-title">KV 块：按需领，用完还</title>
+<desc id="pa-desc">20 秒循环教学示意，每块存 4 个 token 的 KV。物理池始终有 P0 到 P7 八块，按编号固定排列。初始 A 有 6 个 token，块表为 P6、P1；B 有 5 个 token，块表 P4、P7；C 有 2 个 token，块表 P0。A 长到 8 个 token 时先填满 P1；长到第 9 个 token 时才新分配 P5。随后 B 结束，释放 P4 和 P7。最后 C 从 2 长到 5 个 token，先填满 P0，再复用已释放的 P4。已有 KV 始终留在原位。此图假设各块独占，不保留已结束请求的前缀；省略层和注意力头维度。</desc>
+<g font-family="'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif">
+<rect x="0" y="0" width="750" height="1330" rx="0" fill="#FAF8F2" stroke="none" stroke-width="2" />
+<text x="38" y="64" font-size="42" fill="#17324D" font-weight="700" text-anchor="start" >KV 块：按需领，用完还</text>
+<text x="38" y="113" font-size="32" fill="#647585" font-weight="500" text-anchor="start" >逻辑顺序不变，物理位置可以分散</text>
+<rect x="38" y="143" width="126" height="62" rx="14" fill="#E8ECEF" stroke="none" stroke-width="2" />
+<text x="101" y="185" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >初始</text>
+<g opacity="1" data-phase="0" data-component="navigation"><animate attributeName="opacity" values="1;0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="38" y="143" width="126" height="62" rx="14" fill="#17324D" stroke="none" stroke-width="2" />
+<text x="101" y="185" font-size="32" fill="#FFFFFF" font-weight="700" text-anchor="middle" >初始</text>
+</g>
+<rect x="175" y="143" width="126" height="62" rx="14" fill="#E8ECEF" stroke="none" stroke-width="2" />
+<text x="238" y="185" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >填满</text>
+<g opacity="0" data-phase="1" data-component="navigation"><animate attributeName="opacity" values="0;1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="175" y="143" width="126" height="62" rx="14" fill="#17324D" stroke="none" stroke-width="2" />
+<text x="238" y="185" font-size="32" fill="#FFFFFF" font-weight="700" text-anchor="middle" >填满</text>
+</g>
+<rect x="312" y="143" width="126" height="62" rx="14" fill="#E8ECEF" stroke="none" stroke-width="2" />
+<text x="375" y="185" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >新领</text>
+<g opacity="0" data-phase="2" data-component="navigation"><animate attributeName="opacity" values="0;0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="312" y="143" width="126" height="62" rx="14" fill="#17324D" stroke="none" stroke-width="2" />
+<text x="375" y="185" font-size="32" fill="#FFFFFF" font-weight="700" text-anchor="middle" >新领</text>
+</g>
+<rect x="449" y="143" width="126" height="62" rx="14" fill="#E8ECEF" stroke="none" stroke-width="2" />
+<text x="512" y="185" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >归还</text>
+<g opacity="0" data-phase="3" data-component="navigation"><animate attributeName="opacity" values="0;0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="449" y="143" width="126" height="62" rx="14" fill="#17324D" stroke="none" stroke-width="2" />
+<text x="512" y="185" font-size="32" fill="#FFFFFF" font-weight="700" text-anchor="middle" >归还</text>
+</g>
+<rect x="586" y="143" width="126" height="62" rx="14" fill="#E8ECEF" stroke="none" stroke-width="2" />
+<text x="649" y="185" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >复用</text>
+<g opacity="0" data-phase="4" data-component="navigation"><animate attributeName="opacity" values="0;0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="586" y="143" width="126" height="62" rx="14" fill="#17324D" stroke="none" stroke-width="2" />
+<text x="649" y="185" font-size="32" fill="#FFFFFF" font-weight="700" text-anchor="middle" >复用</text>
+</g>
+<text x="39" y="257" font-size="34" fill="#17324D" font-weight="700" text-anchor="start" >请求</text>
+<text x="290" y="257" font-size="32" fill="#17324D" font-weight="600" text-anchor="start" >块表：逻辑块号 : 物理块号</text>
+<rect x="39" y="276" width="672" height="88" rx="16" fill="#FFFFFF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="39" y="276" width="9" height="88" rx="4" fill="#138A84" stroke="none" stroke-width="2" />
+<rect x="39" y="379" width="672" height="88" rx="16" fill="#FFFFFF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="39" y="379" width="9" height="88" rx="4" fill="#DD7937" stroke="none" stroke-width="2" />
+<rect x="39" y="482" width="672" height="88" rx="16" fill="#FFFFFF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="39" y="482" width="9" height="88" rx="4" fill="#875FC0" stroke="none" stroke-width="2" />
+<g opacity="1" data-phase="0" data-component="requests"><animate attributeName="opacity" values="1;0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<text x="66" y="331" font-size="34" fill="#138A84" font-weight="700" text-anchor="start" >A · 6 token</text>
+<rect x="290" y="293" width="121" height="55" rx="11" fill="#E9F5F2" stroke="none" stroke-width="2" />
+<text x="350.5" y="331" font-size="32" fill="#138A84" font-weight="700" text-anchor="middle" >0:P6</text>
+<rect x="424" y="293" width="121" height="55" rx="11" fill="#E9F5F2" stroke="none" stroke-width="2" />
+<text x="484.5" y="331" font-size="32" fill="#138A84" font-weight="700" text-anchor="middle" >1:P1</text>
+<text x="66" y="434" font-size="34" fill="#DD7937" font-weight="700" text-anchor="start" >B · 5 token</text>
+<rect x="290" y="396" width="121" height="55" rx="11" fill="#FFF1E5" stroke="none" stroke-width="2" />
+<text x="350.5" y="434" font-size="32" fill="#DD7937" font-weight="700" text-anchor="middle" >0:P4</text>
+<rect x="424" y="396" width="121" height="55" rx="11" fill="#FFF1E5" stroke="none" stroke-width="2" />
+<text x="484.5" y="434" font-size="32" fill="#DD7937" font-weight="700" text-anchor="middle" >1:P7</text>
+<text x="66" y="537" font-size="34" fill="#875FC0" font-weight="700" text-anchor="start" >C · 2 token</text>
+<rect x="290" y="499" width="121" height="55" rx="11" fill="#F2ECFA" stroke="none" stroke-width="2" />
+<text x="350.5" y="537" font-size="32" fill="#875FC0" font-weight="700" text-anchor="middle" >0:P0</text>
+</g>
+<g opacity="0" data-phase="1" data-component="requests"><animate attributeName="opacity" values="0;1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<text x="66" y="331" font-size="34" fill="#138A84" font-weight="700" text-anchor="start" >A · 8 token</text>
+<rect x="290" y="293" width="121" height="55" rx="11" fill="#E9F5F2" stroke="none" stroke-width="2" />
+<text x="350.5" y="331" font-size="32" fill="#138A84" font-weight="700" text-anchor="middle" >0:P6</text>
+<rect x="424" y="293" width="121" height="55" rx="11" fill="#E9F5F2" stroke="none" stroke-width="2" />
+<text x="484.5" y="331" font-size="32" fill="#138A84" font-weight="700" text-anchor="middle" >1:P1</text>
+<text x="66" y="434" font-size="34" fill="#DD7937" font-weight="700" text-anchor="start" >B · 5 token</text>
+<rect x="290" y="396" width="121" height="55" rx="11" fill="#FFF1E5" stroke="none" stroke-width="2" />
+<text x="350.5" y="434" font-size="32" fill="#DD7937" font-weight="700" text-anchor="middle" >0:P4</text>
+<rect x="424" y="396" width="121" height="55" rx="11" fill="#FFF1E5" stroke="none" stroke-width="2" />
+<text x="484.5" y="434" font-size="32" fill="#DD7937" font-weight="700" text-anchor="middle" >1:P7</text>
+<text x="66" y="537" font-size="34" fill="#875FC0" font-weight="700" text-anchor="start" >C · 2 token</text>
+<rect x="290" y="499" width="121" height="55" rx="11" fill="#F2ECFA" stroke="none" stroke-width="2" />
+<text x="350.5" y="537" font-size="32" fill="#875FC0" font-weight="700" text-anchor="middle" >0:P0</text>
+</g>
+<g opacity="0" data-phase="2" data-component="requests"><animate attributeName="opacity" values="0;0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<text x="66" y="331" font-size="34" fill="#138A84" font-weight="700" text-anchor="start" >A · 9 token</text>
+<rect x="290" y="293" width="121" height="55" rx="11" fill="#E9F5F2" stroke="none" stroke-width="2" />
+<text x="350.5" y="331" font-size="32" fill="#138A84" font-weight="700" text-anchor="middle" >0:P6</text>
+<rect x="424" y="293" width="121" height="55" rx="11" fill="#E9F5F2" stroke="none" stroke-width="2" />
+<text x="484.5" y="331" font-size="32" fill="#138A84" font-weight="700" text-anchor="middle" >1:P1</text>
+<rect x="558" y="293" width="121" height="55" rx="11" fill="#E9F5F2" stroke="none" stroke-width="2" />
+<text x="618.5" y="331" font-size="32" fill="#138A84" font-weight="700" text-anchor="middle" >2:P5</text>
+<text x="66" y="434" font-size="34" fill="#DD7937" font-weight="700" text-anchor="start" >B · 5 token</text>
+<rect x="290" y="396" width="121" height="55" rx="11" fill="#FFF1E5" stroke="none" stroke-width="2" />
+<text x="350.5" y="434" font-size="32" fill="#DD7937" font-weight="700" text-anchor="middle" >0:P4</text>
+<rect x="424" y="396" width="121" height="55" rx="11" fill="#FFF1E5" stroke="none" stroke-width="2" />
+<text x="484.5" y="434" font-size="32" fill="#DD7937" font-weight="700" text-anchor="middle" >1:P7</text>
+<text x="66" y="537" font-size="34" fill="#875FC0" font-weight="700" text-anchor="start" >C · 2 token</text>
+<rect x="290" y="499" width="121" height="55" rx="11" fill="#F2ECFA" stroke="none" stroke-width="2" />
+<text x="350.5" y="537" font-size="32" fill="#875FC0" font-weight="700" text-anchor="middle" >0:P0</text>
+</g>
+<g opacity="0" data-phase="3" data-component="requests"><animate attributeName="opacity" values="0;0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<text x="66" y="331" font-size="34" fill="#138A84" font-weight="700" text-anchor="start" >A · 9 token</text>
+<rect x="290" y="293" width="121" height="55" rx="11" fill="#E9F5F2" stroke="none" stroke-width="2" />
+<text x="350.5" y="331" font-size="32" fill="#138A84" font-weight="700" text-anchor="middle" >0:P6</text>
+<rect x="424" y="293" width="121" height="55" rx="11" fill="#E9F5F2" stroke="none" stroke-width="2" />
+<text x="484.5" y="331" font-size="32" fill="#138A84" font-weight="700" text-anchor="middle" >1:P1</text>
+<rect x="558" y="293" width="121" height="55" rx="11" fill="#E9F5F2" stroke="none" stroke-width="2" />
+<text x="618.5" y="331" font-size="32" fill="#138A84" font-weight="700" text-anchor="middle" >2:P5</text>
+<text x="66" y="434" font-size="34" fill="#DD7937" font-weight="700" text-anchor="start" >B · 已结束</text>
+<text x="290" y="434" font-size="32" fill="#647585" font-weight="500" text-anchor="start" >P4、P7 已归还</text>
+<text x="66" y="537" font-size="34" fill="#875FC0" font-weight="700" text-anchor="start" >C · 2 token</text>
+<rect x="290" y="499" width="121" height="55" rx="11" fill="#F2ECFA" stroke="none" stroke-width="2" />
+<text x="350.5" y="537" font-size="32" fill="#875FC0" font-weight="700" text-anchor="middle" >0:P0</text>
+</g>
+<g opacity="0" data-phase="4" data-component="requests"><animate attributeName="opacity" values="0;0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<text x="66" y="331" font-size="34" fill="#138A84" font-weight="700" text-anchor="start" >A · 9 token</text>
+<rect x="290" y="293" width="121" height="55" rx="11" fill="#E9F5F2" stroke="none" stroke-width="2" />
+<text x="350.5" y="331" font-size="32" fill="#138A84" font-weight="700" text-anchor="middle" >0:P6</text>
+<rect x="424" y="293" width="121" height="55" rx="11" fill="#E9F5F2" stroke="none" stroke-width="2" />
+<text x="484.5" y="331" font-size="32" fill="#138A84" font-weight="700" text-anchor="middle" >1:P1</text>
+<rect x="558" y="293" width="121" height="55" rx="11" fill="#E9F5F2" stroke="none" stroke-width="2" />
+<text x="618.5" y="331" font-size="32" fill="#138A84" font-weight="700" text-anchor="middle" >2:P5</text>
+<text x="66" y="434" font-size="34" fill="#DD7937" font-weight="700" text-anchor="start" >B · 已结束</text>
+<text x="290" y="434" font-size="32" fill="#647585" font-weight="500" text-anchor="start" >P4、P7 已归还</text>
+<text x="66" y="537" font-size="34" fill="#875FC0" font-weight="700" text-anchor="start" >C · 5 token</text>
+<rect x="290" y="499" width="121" height="55" rx="11" fill="#F2ECFA" stroke="none" stroke-width="2" />
+<text x="350.5" y="537" font-size="32" fill="#875FC0" font-weight="700" text-anchor="middle" >0:P0</text>
+<rect x="424" y="499" width="121" height="55" rx="11" fill="#F2ECFA" stroke="none" stroke-width="2" />
+<text x="484.5" y="537" font-size="32" fill="#875FC0" font-weight="700" text-anchor="middle" >1:P4</text>
+</g>
+<text x="39" y="632" font-size="34" fill="#17324D" font-weight="700" text-anchor="start" >物理块池 · 位置始终不变</text>
+<rect x="39" y="660" width="156" height="161" rx="16" fill="#FFFFFF" stroke="#CBD5D9" stroke-width="2" />
+<g opacity="1" data-phase="0" data-component="physical-P0"><animate attributeName="opacity" values="1;0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="39" y="660" width="156" height="161" rx="16" fill="#F2ECFA" stroke="#875FC0" stroke-width="2" />
+<text x="117" y="703" font-size="34" fill="#875FC0" font-weight="700" text-anchor="middle" >P0 · C</text>
+<rect x="56" y="726" width="26" height="32" rx="4" fill="#875FC0" stroke="#875FC0" stroke-width="2" />
+<rect x="87" y="726" width="26" height="32" rx="4" fill="#875FC0" stroke="#875FC0" stroke-width="2" />
+<rect x="118" y="726" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#875FC0" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="149" y="726" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#875FC0" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="117" y="801" font-size="32" fill="#875FC0" font-weight="600" text-anchor="middle" >2 / 4</text>
+</g>
+<g opacity="0" data-phase="1" data-component="physical-P0"><animate attributeName="opacity" values="0;1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="39" y="660" width="156" height="161" rx="16" fill="#F2ECFA" stroke="#875FC0" stroke-width="2" />
+<text x="117" y="703" font-size="34" fill="#875FC0" font-weight="700" text-anchor="middle" >P0 · C</text>
+<rect x="56" y="726" width="26" height="32" rx="4" fill="#875FC0" stroke="#875FC0" stroke-width="2" />
+<rect x="87" y="726" width="26" height="32" rx="4" fill="#875FC0" stroke="#875FC0" stroke-width="2" />
+<rect x="118" y="726" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#875FC0" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="149" y="726" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#875FC0" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="117" y="801" font-size="32" fill="#875FC0" font-weight="600" text-anchor="middle" >2 / 4</text>
+</g>
+<g opacity="0" data-phase="2" data-component="physical-P0"><animate attributeName="opacity" values="0;0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="39" y="660" width="156" height="161" rx="16" fill="#F2ECFA" stroke="#875FC0" stroke-width="2" />
+<text x="117" y="703" font-size="34" fill="#875FC0" font-weight="700" text-anchor="middle" >P0 · C</text>
+<rect x="56" y="726" width="26" height="32" rx="4" fill="#875FC0" stroke="#875FC0" stroke-width="2" />
+<rect x="87" y="726" width="26" height="32" rx="4" fill="#875FC0" stroke="#875FC0" stroke-width="2" />
+<rect x="118" y="726" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#875FC0" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="149" y="726" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#875FC0" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="117" y="801" font-size="32" fill="#875FC0" font-weight="600" text-anchor="middle" >2 / 4</text>
+</g>
+<g opacity="0" data-phase="3" data-component="physical-P0"><animate attributeName="opacity" values="0;0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="39" y="660" width="156" height="161" rx="16" fill="#F2ECFA" stroke="#875FC0" stroke-width="2" />
+<text x="117" y="703" font-size="34" fill="#875FC0" font-weight="700" text-anchor="middle" >P0 · C</text>
+<rect x="56" y="726" width="26" height="32" rx="4" fill="#875FC0" stroke="#875FC0" stroke-width="2" />
+<rect x="87" y="726" width="26" height="32" rx="4" fill="#875FC0" stroke="#875FC0" stroke-width="2" />
+<rect x="118" y="726" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#875FC0" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="149" y="726" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#875FC0" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="117" y="801" font-size="32" fill="#875FC0" font-weight="600" text-anchor="middle" >2 / 4</text>
+</g>
+<g opacity="0" data-phase="4" data-component="physical-P0"><animate attributeName="opacity" values="0;0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="39" y="660" width="156" height="161" rx="16" fill="#F2ECFA" stroke="#875FC0" stroke-width="2" />
+<rect x="37" y="658" width="160" height="165" rx="16" fill="none" stroke="#875FC0" stroke-width="4" />
+<text x="117" y="703" font-size="34" fill="#875FC0" font-weight="700" text-anchor="middle" >P0 · C</text>
+<rect x="56" y="726" width="26" height="32" rx="4" fill="#875FC0" stroke="#875FC0" stroke-width="2" />
+<rect x="87" y="726" width="26" height="32" rx="4" fill="#875FC0" stroke="#875FC0" stroke-width="2" />
+<rect x="118" y="726" width="26" height="32" rx="4" fill="#875FC0" stroke="#875FC0" stroke-width="2" />
+<rect x="149" y="726" width="26" height="32" rx="4" fill="#875FC0" stroke="#875FC0" stroke-width="2" />
+<text x="117" y="801" font-size="32" fill="#875FC0" font-weight="600" text-anchor="middle" >4 / 4</text>
+</g>
+<rect x="211" y="660" width="156" height="161" rx="16" fill="#FFFFFF" stroke="#CBD5D9" stroke-width="2" />
+<g opacity="1" data-phase="0" data-component="physical-P1"><animate attributeName="opacity" values="1;0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="211" y="660" width="156" height="161" rx="16" fill="#E9F5F2" stroke="#138A84" stroke-width="2" />
+<text x="289" y="703" font-size="34" fill="#138A84" font-weight="700" text-anchor="middle" >P1 · A</text>
+<rect x="228" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="259" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="290" y="726" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#138A84" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="321" y="726" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#138A84" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="289" y="801" font-size="32" fill="#138A84" font-weight="600" text-anchor="middle" >2 / 4</text>
+</g>
+<g opacity="0" data-phase="1" data-component="physical-P1"><animate attributeName="opacity" values="0;1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="211" y="660" width="156" height="161" rx="16" fill="#E9F5F2" stroke="#138A84" stroke-width="2" />
+<rect x="209" y="658" width="160" height="165" rx="16" fill="none" stroke="#138A84" stroke-width="4" />
+<text x="289" y="703" font-size="34" fill="#138A84" font-weight="700" text-anchor="middle" >P1 · A</text>
+<rect x="228" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="259" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="290" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="321" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<text x="289" y="801" font-size="32" fill="#138A84" font-weight="600" text-anchor="middle" >4 / 4</text>
+</g>
+<g opacity="0" data-phase="2" data-component="physical-P1"><animate attributeName="opacity" values="0;0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="211" y="660" width="156" height="161" rx="16" fill="#E9F5F2" stroke="#138A84" stroke-width="2" />
+<text x="289" y="703" font-size="34" fill="#138A84" font-weight="700" text-anchor="middle" >P1 · A</text>
+<rect x="228" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="259" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="290" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="321" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<text x="289" y="801" font-size="32" fill="#138A84" font-weight="600" text-anchor="middle" >4 / 4</text>
+</g>
+<g opacity="0" data-phase="3" data-component="physical-P1"><animate attributeName="opacity" values="0;0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="211" y="660" width="156" height="161" rx="16" fill="#E9F5F2" stroke="#138A84" stroke-width="2" />
+<text x="289" y="703" font-size="34" fill="#138A84" font-weight="700" text-anchor="middle" >P1 · A</text>
+<rect x="228" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="259" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="290" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="321" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<text x="289" y="801" font-size="32" fill="#138A84" font-weight="600" text-anchor="middle" >4 / 4</text>
+</g>
+<g opacity="0" data-phase="4" data-component="physical-P1"><animate attributeName="opacity" values="0;0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="211" y="660" width="156" height="161" rx="16" fill="#E9F5F2" stroke="#138A84" stroke-width="2" />
+<text x="289" y="703" font-size="34" fill="#138A84" font-weight="700" text-anchor="middle" >P1 · A</text>
+<rect x="228" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="259" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="290" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="321" y="726" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<text x="289" y="801" font-size="32" fill="#138A84" font-weight="600" text-anchor="middle" >4 / 4</text>
+</g>
+<rect x="383" y="660" width="156" height="161" rx="16" fill="#FFFFFF" stroke="#CBD5D9" stroke-width="2" />
+<g opacity="1" data-phase="0" data-component="physical-P2"><animate attributeName="opacity" values="1;0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="383" y="660" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<text x="461" y="703" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P2</text>
+<rect x="400" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="431" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="462" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="493" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="461" y="801" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<g opacity="0" data-phase="1" data-component="physical-P2"><animate attributeName="opacity" values="0;1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="383" y="660" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<text x="461" y="703" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P2</text>
+<rect x="400" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="431" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="462" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="493" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="461" y="801" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<g opacity="0" data-phase="2" data-component="physical-P2"><animate attributeName="opacity" values="0;0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="383" y="660" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<text x="461" y="703" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P2</text>
+<rect x="400" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="431" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="462" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="493" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="461" y="801" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<g opacity="0" data-phase="3" data-component="physical-P2"><animate attributeName="opacity" values="0;0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="383" y="660" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<text x="461" y="703" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P2</text>
+<rect x="400" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="431" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="462" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="493" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="461" y="801" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<g opacity="0" data-phase="4" data-component="physical-P2"><animate attributeName="opacity" values="0;0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="383" y="660" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<text x="461" y="703" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P2</text>
+<rect x="400" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="431" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="462" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="493" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="461" y="801" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<rect x="555" y="660" width="156" height="161" rx="16" fill="#FFFFFF" stroke="#CBD5D9" stroke-width="2" />
+<g opacity="1" data-phase="0" data-component="physical-P3"><animate attributeName="opacity" values="1;0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="555" y="660" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<text x="633" y="703" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P3</text>
+<rect x="572" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="603" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="634" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="665" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="633" y="801" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<g opacity="0" data-phase="1" data-component="physical-P3"><animate attributeName="opacity" values="0;1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="555" y="660" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<text x="633" y="703" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P3</text>
+<rect x="572" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="603" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="634" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="665" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="633" y="801" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<g opacity="0" data-phase="2" data-component="physical-P3"><animate attributeName="opacity" values="0;0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="555" y="660" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<text x="633" y="703" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P3</text>
+<rect x="572" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="603" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="634" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="665" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="633" y="801" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<g opacity="0" data-phase="3" data-component="physical-P3"><animate attributeName="opacity" values="0;0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="555" y="660" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<text x="633" y="703" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P3</text>
+<rect x="572" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="603" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="634" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="665" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="633" y="801" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<g opacity="0" data-phase="4" data-component="physical-P3"><animate attributeName="opacity" values="0;0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="555" y="660" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<text x="633" y="703" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P3</text>
+<rect x="572" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="603" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="634" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="665" y="726" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="633" y="801" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<rect x="39" y="847" width="156" height="161" rx="16" fill="#FFFFFF" stroke="#CBD5D9" stroke-width="2" />
+<g opacity="1" data-phase="0" data-component="physical-P4"><animate attributeName="opacity" values="1;0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="39" y="847" width="156" height="161" rx="16" fill="#FFF1E5" stroke="#DD7937" stroke-width="2" />
+<text x="117" y="890" font-size="34" fill="#DD7937" font-weight="700" text-anchor="middle" >P4 · B</text>
+<rect x="56" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<rect x="87" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<rect x="118" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<rect x="149" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<text x="117" y="988" font-size="32" fill="#DD7937" font-weight="600" text-anchor="middle" >4 / 4</text>
+</g>
+<g opacity="0" data-phase="1" data-component="physical-P4"><animate attributeName="opacity" values="0;1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="39" y="847" width="156" height="161" rx="16" fill="#FFF1E5" stroke="#DD7937" stroke-width="2" />
+<text x="117" y="890" font-size="34" fill="#DD7937" font-weight="700" text-anchor="middle" >P4 · B</text>
+<rect x="56" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<rect x="87" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<rect x="118" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<rect x="149" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<text x="117" y="988" font-size="32" fill="#DD7937" font-weight="600" text-anchor="middle" >4 / 4</text>
+</g>
+<g opacity="0" data-phase="2" data-component="physical-P4"><animate attributeName="opacity" values="0;0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="39" y="847" width="156" height="161" rx="16" fill="#FFF1E5" stroke="#DD7937" stroke-width="2" />
+<text x="117" y="890" font-size="34" fill="#DD7937" font-weight="700" text-anchor="middle" >P4 · B</text>
+<rect x="56" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<rect x="87" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<rect x="118" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<rect x="149" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<text x="117" y="988" font-size="32" fill="#DD7937" font-weight="600" text-anchor="middle" >4 / 4</text>
+</g>
+<g opacity="0" data-phase="3" data-component="physical-P4"><animate attributeName="opacity" values="0;0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="39" y="847" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<rect x="37" y="845" width="160" height="165" rx="16" fill="none" stroke="#17324D" stroke-width="4" />
+<text x="117" y="890" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P4</text>
+<rect x="56" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="87" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="118" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="149" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="117" y="988" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<g opacity="0" data-phase="4" data-component="physical-P4"><animate attributeName="opacity" values="0;0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="39" y="847" width="156" height="161" rx="16" fill="#F2ECFA" stroke="#875FC0" stroke-width="2" />
+<rect x="37" y="845" width="160" height="165" rx="16" fill="none" stroke="#875FC0" stroke-width="4" />
+<text x="117" y="890" font-size="34" fill="#875FC0" font-weight="700" text-anchor="middle" >P4 · C</text>
+<rect x="56" y="913" width="26" height="32" rx="4" fill="#875FC0" stroke="#875FC0" stroke-width="2" />
+<rect x="87" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#875FC0" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="118" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#875FC0" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="149" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#875FC0" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="117" y="988" font-size="32" fill="#875FC0" font-weight="600" text-anchor="middle" >1 / 4</text>
+</g>
+<rect x="211" y="847" width="156" height="161" rx="16" fill="#FFFFFF" stroke="#CBD5D9" stroke-width="2" />
+<g opacity="1" data-phase="0" data-component="physical-P5"><animate attributeName="opacity" values="1;0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="211" y="847" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<text x="289" y="890" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P5</text>
+<rect x="228" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="259" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="290" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="321" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="289" y="988" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<g opacity="0" data-phase="1" data-component="physical-P5"><animate attributeName="opacity" values="0;1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="211" y="847" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<text x="289" y="890" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P5</text>
+<rect x="228" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="259" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="290" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="321" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="289" y="988" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<g opacity="0" data-phase="2" data-component="physical-P5"><animate attributeName="opacity" values="0;0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="211" y="847" width="156" height="161" rx="16" fill="#E9F5F2" stroke="#138A84" stroke-width="2" />
+<rect x="209" y="845" width="160" height="165" rx="16" fill="none" stroke="#138A84" stroke-width="4" />
+<text x="289" y="890" font-size="34" fill="#138A84" font-weight="700" text-anchor="middle" >P5 · A</text>
+<rect x="228" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="259" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#138A84" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="290" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#138A84" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="321" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#138A84" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="289" y="988" font-size="32" fill="#138A84" font-weight="600" text-anchor="middle" >1 / 4</text>
+</g>
+<g opacity="0" data-phase="3" data-component="physical-P5"><animate attributeName="opacity" values="0;0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="211" y="847" width="156" height="161" rx="16" fill="#E9F5F2" stroke="#138A84" stroke-width="2" />
+<text x="289" y="890" font-size="34" fill="#138A84" font-weight="700" text-anchor="middle" >P5 · A</text>
+<rect x="228" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="259" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#138A84" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="290" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#138A84" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="321" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#138A84" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="289" y="988" font-size="32" fill="#138A84" font-weight="600" text-anchor="middle" >1 / 4</text>
+</g>
+<g opacity="0" data-phase="4" data-component="physical-P5"><animate attributeName="opacity" values="0;0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="211" y="847" width="156" height="161" rx="16" fill="#E9F5F2" stroke="#138A84" stroke-width="2" />
+<text x="289" y="890" font-size="34" fill="#138A84" font-weight="700" text-anchor="middle" >P5 · A</text>
+<rect x="228" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="259" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#138A84" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="290" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#138A84" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="321" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#138A84" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="289" y="988" font-size="32" fill="#138A84" font-weight="600" text-anchor="middle" >1 / 4</text>
+</g>
+<rect x="383" y="847" width="156" height="161" rx="16" fill="#FFFFFF" stroke="#CBD5D9" stroke-width="2" />
+<g opacity="1" data-phase="0" data-component="physical-P6"><animate attributeName="opacity" values="1;0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="383" y="847" width="156" height="161" rx="16" fill="#E9F5F2" stroke="#138A84" stroke-width="2" />
+<text x="461" y="890" font-size="34" fill="#138A84" font-weight="700" text-anchor="middle" >P6 · A</text>
+<rect x="400" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="431" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="462" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="493" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<text x="461" y="988" font-size="32" fill="#138A84" font-weight="600" text-anchor="middle" >4 / 4</text>
+</g>
+<g opacity="0" data-phase="1" data-component="physical-P6"><animate attributeName="opacity" values="0;1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="383" y="847" width="156" height="161" rx="16" fill="#E9F5F2" stroke="#138A84" stroke-width="2" />
+<text x="461" y="890" font-size="34" fill="#138A84" font-weight="700" text-anchor="middle" >P6 · A</text>
+<rect x="400" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="431" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="462" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="493" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<text x="461" y="988" font-size="32" fill="#138A84" font-weight="600" text-anchor="middle" >4 / 4</text>
+</g>
+<g opacity="0" data-phase="2" data-component="physical-P6"><animate attributeName="opacity" values="0;0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="383" y="847" width="156" height="161" rx="16" fill="#E9F5F2" stroke="#138A84" stroke-width="2" />
+<text x="461" y="890" font-size="34" fill="#138A84" font-weight="700" text-anchor="middle" >P6 · A</text>
+<rect x="400" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="431" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="462" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="493" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<text x="461" y="988" font-size="32" fill="#138A84" font-weight="600" text-anchor="middle" >4 / 4</text>
+</g>
+<g opacity="0" data-phase="3" data-component="physical-P6"><animate attributeName="opacity" values="0;0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="383" y="847" width="156" height="161" rx="16" fill="#E9F5F2" stroke="#138A84" stroke-width="2" />
+<text x="461" y="890" font-size="34" fill="#138A84" font-weight="700" text-anchor="middle" >P6 · A</text>
+<rect x="400" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="431" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="462" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="493" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<text x="461" y="988" font-size="32" fill="#138A84" font-weight="600" text-anchor="middle" >4 / 4</text>
+</g>
+<g opacity="0" data-phase="4" data-component="physical-P6"><animate attributeName="opacity" values="0;0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="383" y="847" width="156" height="161" rx="16" fill="#E9F5F2" stroke="#138A84" stroke-width="2" />
+<text x="461" y="890" font-size="34" fill="#138A84" font-weight="700" text-anchor="middle" >P6 · A</text>
+<rect x="400" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="431" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="462" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<rect x="493" y="913" width="26" height="32" rx="4" fill="#138A84" stroke="#138A84" stroke-width="2" />
+<text x="461" y="988" font-size="32" fill="#138A84" font-weight="600" text-anchor="middle" >4 / 4</text>
+</g>
+<rect x="555" y="847" width="156" height="161" rx="16" fill="#FFFFFF" stroke="#CBD5D9" stroke-width="2" />
+<g opacity="1" data-phase="0" data-component="physical-P7"><animate attributeName="opacity" values="1;0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="555" y="847" width="156" height="161" rx="16" fill="#FFF1E5" stroke="#DD7937" stroke-width="2" />
+<text x="633" y="890" font-size="34" fill="#DD7937" font-weight="700" text-anchor="middle" >P7 · B</text>
+<rect x="572" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<rect x="603" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#DD7937" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="634" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#DD7937" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="665" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#DD7937" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="633" y="988" font-size="32" fill="#DD7937" font-weight="600" text-anchor="middle" >1 / 4</text>
+</g>
+<g opacity="0" data-phase="1" data-component="physical-P7"><animate attributeName="opacity" values="0;1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="555" y="847" width="156" height="161" rx="16" fill="#FFF1E5" stroke="#DD7937" stroke-width="2" />
+<text x="633" y="890" font-size="34" fill="#DD7937" font-weight="700" text-anchor="middle" >P7 · B</text>
+<rect x="572" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<rect x="603" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#DD7937" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="634" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#DD7937" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="665" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#DD7937" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="633" y="988" font-size="32" fill="#DD7937" font-weight="600" text-anchor="middle" >1 / 4</text>
+</g>
+<g opacity="0" data-phase="2" data-component="physical-P7"><animate attributeName="opacity" values="0;0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="555" y="847" width="156" height="161" rx="16" fill="#FFF1E5" stroke="#DD7937" stroke-width="2" />
+<text x="633" y="890" font-size="34" fill="#DD7937" font-weight="700" text-anchor="middle" >P7 · B</text>
+<rect x="572" y="913" width="26" height="32" rx="4" fill="#DD7937" stroke="#DD7937" stroke-width="2" />
+<rect x="603" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#DD7937" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="634" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#DD7937" stroke-width="2" stroke-dasharray="4 3"/>
+<rect x="665" y="913" width="26" height="32" rx="4" fill="#FFFFFF" stroke="#DD7937" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="633" y="988" font-size="32" fill="#DD7937" font-weight="600" text-anchor="middle" >1 / 4</text>
+</g>
+<g opacity="0" data-phase="3" data-component="physical-P7"><animate attributeName="opacity" values="0;0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="555" y="847" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<rect x="553" y="845" width="160" height="165" rx="16" fill="none" stroke="#17324D" stroke-width="4" />
+<text x="633" y="890" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P7</text>
+<rect x="572" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="603" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="634" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="665" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="633" y="988" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<g opacity="0" data-phase="4" data-component="physical-P7"><animate attributeName="opacity" values="0;0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<rect x="555" y="847" width="156" height="161" rx="16" fill="#F1F3F4" stroke="#CBD5D9" stroke-width="2" />
+<text x="633" y="890" font-size="34" fill="#647585" font-weight="700" text-anchor="middle" >P7</text>
+<rect x="572" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="603" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="634" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<rect x="665" y="913" width="26" height="32" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="633" y="988" font-size="32" fill="#647585" font-weight="600" text-anchor="middle" >空闲</text>
+</g>
+<rect x="45" y="1053" width="26" height="30" rx="4" fill="#138A84" stroke="none" stroke-width="2" />
+<text x="83" y="1079" font-size="32" fill="#17324D" font-weight="500" text-anchor="start" >已写</text>
+<rect x="249" y="1053" width="26" height="30" rx="4" fill="#FFFFFF" stroke="#138A84" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="287" y="1079" font-size="32" fill="#17324D" font-weight="500" text-anchor="start" >块内尾空</text>
+<rect x="537" y="1053" width="26" height="30" rx="4" fill="#E8ECEF" stroke="#CBD5D9" stroke-width="2" />
+<text x="575" y="1079" font-size="32" fill="#17324D" font-weight="500" text-anchor="start" >空闲块</text>
+<rect x="39" y="1120" width="672" height="149" rx="16" fill="#FFFFFF" stroke="#CBD5D9" stroke-width="2" />
+<g opacity="1" data-phase="0" data-component="explanation"><animate attributeName="opacity" values="1;0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<text x="62" y="1173" font-size="32" fill="#17324D" font-weight="600" text-anchor="start" >每块放 4 个 token 的 KV</text>
+<text x="62" y="1226" font-size="32" fill="#17324D" font-weight="500" text-anchor="start" >A 的前 4 个在 P6，后 2 个在 P1</text>
+</g>
+<g opacity="0" data-phase="1" data-component="explanation"><animate attributeName="opacity" values="0;1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<text x="62" y="1173" font-size="32" fill="#17324D" font-weight="600" text-anchor="start" >A：6 → 8 token</text>
+<text x="62" y="1226" font-size="32" fill="#17324D" font-weight="500" text-anchor="start" >先填满 P1，块表不变</text>
+</g>
+<g opacity="0" data-phase="2" data-component="explanation"><animate attributeName="opacity" values="0;0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<text x="62" y="1173" font-size="32" fill="#17324D" font-weight="600" text-anchor="start" >A：8 → 9 token，才新领 P5</text>
+<text x="62" y="1226" font-size="32" fill="#17324D" font-weight="500" text-anchor="start" >P6、P1 留在原位，旧 KV 不搬动</text>
+</g>
+<g opacity="0" data-phase="3" data-component="explanation"><animate attributeName="opacity" values="0;0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<text x="62" y="1173" font-size="32" fill="#17324D" font-weight="600" text-anchor="start" >B 结束：P4、P7 回到空闲池</text>
+<text x="62" y="1226" font-size="32" fill="#17324D" font-weight="500" text-anchor="start" >A、C 已有的 KV 不搬动</text>
+</g>
+<g opacity="0" data-phase="4" data-component="explanation"><animate attributeName="opacity" values="0;0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8;1" calcMode="discrete" dur="20s" begin="0s" repeatCount="indefinite"/>
+<text x="62" y="1173" font-size="32" fill="#17324D" font-weight="600" text-anchor="start" >C：2 → 5 token，复用刚释放的 P4</text>
+<text x="62" y="1226" font-size="32" fill="#17324D" font-weight="500" text-anchor="start" >先填满 P0，再把新 KV 写入 P4</text>
+</g>
+<text x="375" y="1312" font-size="28" fill="#647585" font-weight="500" text-anchor="middle" >过程示意 · 每 4 秒一步，不代表实际耗时</text>
+</g></svg>
